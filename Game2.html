@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shoot 'Em Up</title>
+  <title>Memory Game</title>
 </head>
+
+<body>
+<canvas id="myCanvas" width="480" height="320">
+  <p>Your browser does not support HTML5!</p>
+</canvas>
 <script type="text/javascript">
   var canvas = document.getElementById("myCanvas");
   var context = canvas.getContext("2d");
@@ -10,20 +15,11 @@
   var height = canvas.getAttribute('height');
 
   var bgImage = new Image();
-  var logoImage = new Image();
-  var playImage = new Image();
-  var instructImage = new Image();
-  var settingsImage = new Image();
-  var creditsImage = new Image();
-  var shipImage = new Image();
 
-  shipImage.src = "Images/ship.png";
+
+
   bgImage.src = "Images/Background.png";
-  logoImage.src = "Images/logo.png";
-  playImage.src = "Images/play.png";
-  instructImage.src = "Images/instructions.png";
-  settingsImage.src = "Images/settings.png";
-  creditsImage.src = "Images/credits.png";
+
 
   var buttonX = [192,110,149,160];
   var buttonY = [100,140,180,220];
@@ -33,26 +29,14 @@
   bgImage.onload = function(){
     context.drawImage(bgImage, 0, 0);
   };
-  logoImage.onload = function(){
-    context.drawImage(logoImage, 50, -10);
-  }
-  playImage.onload = function(){
-    context.drawImage(playImage, buttonX[0], buttonY[0]);
-  }
-  instructImage.onload = function(){
-    context.drawImage(instructImage, buttonX[1], buttonY[1]);
-  }
-  settingsImage.onload = function(){
-    context.drawImage(settingsImage, buttonX[2], buttonY[2]);
-  }
-  creditsImage.onload = function(){
-    context.drawImage(creditsImage, buttonX[3], buttonY[3]);
-  }
+
+
 </script>
-<body>
-<canvas id="myCanvas" width="480" height="320">
-  <p>Your browser does not support HTML5!</p>
-</canvas>
+
+<div id="div1"> Play
+  <button> Easy Mode</button>
+  <button> Hard Mode</button>
+</div>
 </body>
 
 </html>
