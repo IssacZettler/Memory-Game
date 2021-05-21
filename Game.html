@@ -3,22 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Memory Game</title>
+    <link rel="stylesheet" href="Game.css">
 </head>
-<style>
-    div {
-        width: 300px;
-        border: 15px solid #0b110b;
-        padding: 50px;
-        margin: 20px;
-    }
-</style>
 <body>
-<div id="div1"> Play
-<button> Easy Mode</button>
-<button> Hard Mode</button>
-</div>
 
 
 
+
+<script>
+
+    let cellGuessed = [
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+    ];
+    let cellContent = [
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+    ];
+
+    function setUp(){
+        for(let i = 0; i < cellContent.length; i++) {
+            for(let j = 0; j < cellContent[i].length; j++){
+               //need an algorithm to fill the memory game cells
+            }
+        }
+    }
+
+
+
+    // for(let i = 0; i < cellGuessed.length; i++) {
+    //     for(let j = 0; j < cellGuessed[i].length; j++){
+    //         document.write(cellGuessed[i][j]+ "&nbsp;&nbsp;&nbsp;");
+    //     }
+    //     document.write("<br />");
+    // }
+
+
+</script>
 </body>
 </html>
