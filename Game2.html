@@ -9,7 +9,7 @@
   <p>Your browser does not support HTML5!</p>
 </canvas>
 <script type="text/javascript">
-  let cellsize= 5;
+  let cellsize= 20;
   var theCanvas = document.getElementById("myCanvas");
   var context = theCanvas.getContext("2d");
   var width = theCanvas.getAttribute('width');
@@ -25,8 +25,16 @@
 function drawCell(column,row){
   console.log("Column: " + (column  + cellsize) + "Row: " + (row + cellsize));
   context.beginPath();
-  context.moveTo(column + cellsize, row + cellsize);
-  context.lineTo(column *  cellsize,row  + cellsize);
+  context.moveTo(column * cellsize, row * cellsize);
+
+  context.lineTo((column +1) *  cellsize,row *cellsize);
+
+  context.lineTo((column+1)*cellsize, (row+1)*cellsize);
+
+  context.lineTo(column*  cellsize,(row+1) *cellsize);
+
+  context.lineTo(column*cellsize, row*cellsize);
+
   context.stroke();
   context.closePath();
 }
