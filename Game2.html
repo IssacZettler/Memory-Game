@@ -9,17 +9,27 @@
   <p>Your browser does not support HTML5!</p>
 </canvas>
 <script type="text/javascript">
-  var canvas = document.getElementById("myCanvas");
-  var context = canvas.getContext("2d");
-  var width = canvas.getAttribute('width');
-  var height = canvas.getAttribute('height');
-
-  var bgImage = new Image();
-
+  let cellsize= 6;
+  var theCanvas = document.getElementById("myCanvas");
+  var context = theCanvas.getContext("2d");
+  var width = theCanvas.getAttribute('width');
+  var height = theCanvas.getAttribute('height');
 
 
-  bgImage.src = "Images/Background.png";
+  // var bgImage = new Image();
+  // bgImage.src = "Images/Background.png";
 
+  drawCell(6,6);
+
+
+function drawCell(column,row){
+  console.log("Column: " + (column * cellsize + cellsize) + "Row: " + (row * cellsize + cellsize));
+  context.beginPath();
+  context.moveTo(column + cellsize+cellsize, row + cellsize+cellsize);
+  context.lineTo(column * cellsize + cellsize,row * cellsize + cellsize);
+  context.stroke();
+  context.closePath();
+}
 
   var buttonX = [192,110,149,160];
   var buttonY = [100,140,180,220];
