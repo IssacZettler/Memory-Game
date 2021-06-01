@@ -16,17 +16,22 @@
   var width = theCanvas.getAttribute('width');
   var height = theCanvas.getAttribute('height');
   let cells =[
-                  [0,0,0,0],
-                  [0,0,0,0],
-                  [0,0,0,0],
-                  [0,0,0,0]
+                  ["1","7","9","3"],
+                  ["B","1","2","a"],
+                  ["2","7","3","y"],
+                  ["y","a","B","9"]
+
   ];
-  let cellsTwo =[
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]
-  ];
+
+
+
+  let cellStatus =
+                 [ [-1,1,-1,-1],
+                  [-1,-1,1,-1],
+                  [-1,1,-1,-1],
+                  [-1,-1,-1,-1]];
+  let lastClickedValue="";
+
 
 function getCanvasClick(canvas, event){
   const rect= canvas.getBoundingClientRect();
@@ -41,8 +46,19 @@ myCanvas.addEventListener("mousedown",function(e){
   x=Math.floor(x/cellsize);
     y=Math.floor(y/cellsize);
     console.log(x,y);
+    testForTwo(x,y);
     drawCell(x,y);
   }
+  function testForTwo(x,y){
+  if (lastClickedValue)=""{
+    lastClickedValue=cells[x][y];
+    }else{
+    if(lastClickedValue===cells[x][y]){
+      cellStatus[x][y]=1;
+    }
+    }
+  }
+  //to do: also make previous clicked at
   // var bgImage = new Image();
   // bgImage.src = "Images/Background.png";
   function setUp(){
