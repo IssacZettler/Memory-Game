@@ -87,7 +87,7 @@
         context.lineTo((column + 1) * cellsize, (row + 1) * cellsize);
         context.lineTo(column * cellsize, (row + 1) * cellsize);
         context.lineTo(column * cellsize, row * cellsize);
-        context.fillText(cells[column][row], column * cellsize, (row +1)* cellsize);
+        context.fillText(cells[column][row], (column+ 0.2)* cellsize, (row +0.7) *cellsize);
         context.stroke();
         context.closePath();
 
