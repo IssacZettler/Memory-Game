@@ -13,6 +13,7 @@
   let cellsize= 20;
   var theCanvas = document.getElementById("myCanvas");
   var context = theCanvas.getContext("2d");
+  context.font = "30px Arial";
   var width = theCanvas.getAttribute('width');
   var height = theCanvas.getAttribute('height');
   let cells =[
@@ -50,7 +51,7 @@ myCanvas.addEventListener("mousedown",function(e){
     drawCell(x,y);
   }
   function testForTwo(x,y){
-  if (lastClickedValue)=""{
+  if (lastClickedValue=""){
     lastClickedValue=cells[x][y];
     }else{
     if(lastClickedValue===cells[x][y]){
@@ -74,33 +75,23 @@ myCanvas.addEventListener("mousedown",function(e){
   }
 
 
-function drawCell(column,row){
-  console.log("Column: " + (column  + cellsize) + "Row: " + (row + cellsize));
+
+
+function drawCell(column,row) {
+  console.log("Column: " + (column + cellsize) + "Row: " + (row + cellsize));
   context.beginPath();
   context.moveTo(column * cellsize, row * cellsize);
-
-  context.lineTo((column +1) *  cellsize,row *cellsize);
-
-  context.lineTo((column+1)*cellsize, (row+1)*cellsize);
-
-  context.lineTo(column*  cellsize,(row+1) *cellsize);
-
-  context.lineTo(column*cellsize, row*cellsize);
-
+  context.lineTo((column + 1) * cellsize, row * cellsize);
+  context.lineTo((column + 1) * cellsize, (row + 1) * cellsize);
+  context.lineTo(column * cellsize, (row + 1) * cellsize);
+  context.lineTo(column * cellsize, row * cellsize);
+  context.fillText(cells[column][row], column*cellsize, row*cellsize);
   context.stroke();
   context.closePath();
 
 }
 //function drawGrid(){}
 
-  var buttonX = [192,110,149,160];
-  var buttonY = [100,140,180,220];
-  var buttonWidth = [96,260,182,160];
-  var buttonHeight = [40,40,40,40];
-
-  bgImage.onload = function(){
-    context.drawImage(bgImage, 0, 0);
-  };
 
 
 </script>
