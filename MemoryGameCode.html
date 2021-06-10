@@ -10,7 +10,7 @@
 
 </canvas>
 <script type="text/javascript">
-    let cellsize = 40;
+    let cellsize = 60;
     var theCanvas = document.getElementById("myCanvas");
     var context = theCanvas.getContext("2d");
     context.font = "30px Arial";
@@ -26,9 +26,9 @@
 
 
     let cellStatus =
-        [[-1, 1, -1, -1],
-            [-1, -1, 1, -1],
-            [-1, 1, -1, -1],
+        [[-1, -1, -1, -1],
+            [-1, -1, -1, -1],
+            [-1, -1, -1, -1],
             [-1, -1, -1, -1]];
     let lastClickedValue = "";
 
@@ -47,26 +47,41 @@
     function processUserClick(x, y) {
         x = Math.floor(x / cellsize);
         y = Math.floor(y / cellsize);
-        console.log(x, y);
+        //  console.log(x, y);
         testForTwo(x, y);
         drawCell(x, y);
+
+        if (lastClickedValue != "") {
+            //test if click matches last click
+            if (lastClickedValue = cells[x][y]) {
+                cellStatus[x][y] = 1;
+                drawGrid();
+            }
+        } else {
+            lastClickedValue = cells[x][y];
+            drawGrid();
+        }
     }
 
     function testForTwo(x, y) {
-        if (lastClickedValue = "") {
+        if (lastClickedValue === "") {
             lastClickedValue = cells[x][y];
+            //need to call the objects if only one
         } else {
+            console.log(cells[x][y]);
             if (lastClickedValue === cells[x][y]) {
                 cellStatus[x][y] = 1;
+                //need to call the objects if two are chosen, start a 2 second timer, then show nothing.
             }
         }
+        //  console.log(cellStatus);
     }
 
     //to do: also make previous clicked at
     // var bgImage = new Image();
     // bgImage.src = "Images/Background.png";
     function setUp() {
-         console.log("ye");
+        //  console.log("ye");
         drawGrid();
 
     }
@@ -74,20 +89,33 @@
     function drawGrid() {
         for (let i = 0; i < cells.length; i++) {
             for (let j = 0; j < cells[i].length; j++)
-                drawCell(j, i);
+                if (cellStatus[i][j] === 1) {
+
+                    drawCell(j, i, false);
+                } else {
+                    drawCell(j, i, true);
+                }
+
+
         }
     }
 
 
-    function drawCell(column, row) {
-        console.log("Column: " + (column + cellsize) + "Row: " + (row + cellsize));
+    function drawCell(column, row, show = true) {
+       // console.log("Column: " + (column + cellsize) + "Row: " + (row + cellsize));
         context.beginPath();
         context.moveTo(column * cellsize, row * cellsize);
         context.lineTo((column + 1) * cellsize, row * cellsize);
         context.lineTo((column + 1) * cellsize, (row + 1) * cellsize);
         context.lineTo(column * cellsize, (row + 1) * cellsize);
         context.lineTo(column * cellsize, row * cellsize);
-        context.fillText(cells[column][row], (column+ 0.2)* cellsize, (row +0.7) *cellsize);
+        if (!show) {
+            console.log(cells[column][row]);
+            console.log((column + 0.2) * cellsize);
+            console.log((row + 0.7) * cellsize);
+            context.fillText(cells[column][row],  (row ) * cellsize+0.3*cellsize,(column ) * cellsize+0.7*cellsize);
+
+        }
         context.stroke();
         context.closePath();
 
@@ -98,9 +126,8 @@
 
 </script>
 
-<div id="div1"> Play
-    <button> Easy Mode</button>
-    <button> Hard Mode</button>
+<div id="div1">
+
 </div>
 </body>
 
