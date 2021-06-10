@@ -63,19 +63,40 @@
         }
     }
 
+    let lastX=-1
+    let lastY=-1
     function testForTwo(x, y) {
-        if (lastClickedValue === "") {
-            lastClickedValue = cells[x][y];
-            //need to call the objects if only one
-        } else {
-            console.log(cells[x][y]);
-            if (lastClickedValue === cells[x][y]) {
-                cellStatus[x][y] = 1;
-                //need to call the objects if two are chosen, start a 2 second timer, then show nothing.
+        if(lastX===-1){
+            //first clicked
+        }
+        else{
+            if(cells[x][y]===cells[lastX][lastY]){
+                //second clicked and they matched
             }
         }
-        //  console.log(cellStatus);
+
+
+
+
+
     }
+    lastX===-1;
+    lastY===-1;
+  //  function testForTwo(x, y) {
+   //     if (lastClickedValue === "") {
+   //         lastClickedValue = [x,y];
+     //       //need to call the objects if only one
+       // } else {
+        //    console.log(cells[x][y]);
+          //  if ( cells[lastClickedValue[0],lastClickedValue[1]]===cells[x][y]) {
+            //    cellStatus[x][y] = 1;
+              //  cellStatus[lastClickedValue[0],lastClickedValue[1]]=1;
+                //need to call the objects if two are chosen, start a 2 second timer, then show nothing.
+           // }
+           // lastClickedValue="";
+        //}
+        //  console.log(cellStatus);
+    //}
 
     //to do: also make previous clicked at
     // var bgImage = new Image();
